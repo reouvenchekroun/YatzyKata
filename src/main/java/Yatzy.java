@@ -1,5 +1,16 @@
 public class Yatzy {
 
+    protected int[] dice;
+    public Yatzy(int d1, int d2, int d3, int d4, int _5)
+    {
+        dice = new int[5];
+        dice[0] = d1;
+        dice[1] = d2;
+        dice[2] = d3;
+        dice[3] = d4;
+        dice[4] = _5;
+    }
+
     public static int chance(int d1, int d2, int d3, int d4, int d5)
     {
         int total = 0;
@@ -55,17 +66,6 @@ public class Yatzy {
         return s;
     }
 
-    protected int[] dice;
-    public Yatzy(int d1, int d2, int d3, int d4, int _5)
-    {
-        dice = new int[5];
-        dice[0] = d1;
-        dice[1] = d2;
-        dice[2] = d3;
-        dice[3] = d4;
-        dice[4] = _5;
-    }
-
     public int fours()
     {
         int sum;
@@ -91,13 +91,13 @@ public class Yatzy {
     public int sixes()
     {
         int sum = 0;
-        for (int at = 0; at < dice.length; at++)
-            if (dice[at] == 6)
+        for (int die : dice)
+            if (die == 6)
                 sum = sum + 6;
         return sum;
     }
 
-    public static int score_pair(int d1, int d2, int d3, int d4, int d5)
+    public static int onePair(int d1, int d2, int d3, int d4, int d5)
     {
         int[] counts = new int[6];
         counts[d1-1]++;
@@ -112,7 +112,7 @@ public class Yatzy {
         return 0;
     }
 
-    public static int two_pair(int d1, int d2, int d3, int d4, int d5)
+    public static int twoPairs(int d1, int d2, int d3, int d4, int d5)
     {
         int[] counts = new int[6];
         counts[d1-1]++;
@@ -133,7 +133,7 @@ public class Yatzy {
             return 0;
     }
 
-    public static int four_of_a_kind(int _1, int _2, int d3, int d4, int d5)
+    public static int fourOfAKind(int _1, int _2, int d3, int d4, int d5)
     {
         int[] tallies;
         tallies = new int[6];
@@ -148,7 +148,7 @@ public class Yatzy {
         return 0;
     }
 
-    public static int three_of_a_kind(int d1, int d2, int d3, int d4, int d5)
+    public static int threeOfAKind(int d1, int d2, int d3, int d4, int d5)
     {
         int[] t;
         t = new int[6];
@@ -207,9 +207,6 @@ public class Yatzy {
         int _2_at = 0;
         boolean _3 = false;
         int _3_at = 0;
-
-
-
 
         tallies = new int[6];
         tallies[d1-1] += 1;
