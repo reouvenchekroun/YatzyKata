@@ -22,27 +22,27 @@ public class ScoreCalculator {
     }
 
     public int ones(DiceWrapper diceWrapper) {
-        return countPointsForDicesWithValue(diceWrapper, DiceResult.ONE);
+        return calculateScoreForDiceResult(diceWrapper, DiceResult.ONE);
     }
 
     public int twos(DiceWrapper diceWrapper) {
-        return countPointsForDicesWithValue(diceWrapper, DiceResult.TWO);
+        return calculateScoreForDiceResult(diceWrapper, DiceResult.TWO);
     }
 
     public int threes(DiceWrapper diceWrapper) {
-        return countPointsForDicesWithValue(diceWrapper, DiceResult.THREE);
+        return calculateScoreForDiceResult(diceWrapper, DiceResult.THREE);
     }
 
     public int fours(DiceWrapper diceWrapper) {
-        return countPointsForDicesWithValue(diceWrapper, DiceResult.FOUR);
+        return calculateScoreForDiceResult(diceWrapper, DiceResult.FOUR);
     }
 
     public int fives(DiceWrapper diceWrapper) {
-        return countPointsForDicesWithValue(diceWrapper, DiceResult.FIVE);
+        return calculateScoreForDiceResult(diceWrapper, DiceResult.FIVE);
     }
 
     public int sixes(DiceWrapper diceWrapper) {
-        return countPointsForDicesWithValue(diceWrapper, DiceResult.SIX);
+        return calculateScoreForDiceResult(diceWrapper, DiceResult.SIX);
     }
 
     public int onePair(DiceWrapper diceWrapper) {
@@ -54,15 +54,15 @@ public class ScoreCalculator {
     }
 
     public int twoPairs(DiceWrapper diceWrapper) {
-        return calculateXOfAKindScore(diceWrapper, 2);
+        return calculateScoreForXOfAKind(diceWrapper, 2);
     }
 
     public int threeOfAKind(DiceWrapper diceWrapper) {
-        return calculateXOfAKindScore(diceWrapper, 3);
+        return calculateScoreForXOfAKind(diceWrapper, 3);
     }
 
     public int fourOfAKind(DiceWrapper diceWrapper) {
-        return calculateXOfAKindScore(diceWrapper, 4);
+        return calculateScoreForXOfAKind(diceWrapper, 4);
     }
 
     public int smallStraight(DiceWrapper diceWrapper) {
@@ -77,11 +77,11 @@ public class ScoreCalculator {
         return diceWrapper.isFullHouse() ? diceWrapper.sum() : NO_POINTS;
     }
 
-    private int countPointsForDicesWithValue(DiceWrapper diceWrapper, DiceResult diceResult) {
+    private int calculateScoreForDiceResult(DiceWrapper diceWrapper, DiceResult diceResult) {
         return diceWrapper.getOccurencesOfValue(diceResult) * diceResult.getValue();
     }
 
-    private int calculateXOfAKindScore(DiceWrapper diceWrapper, Integer frequency) {
+    private int calculateScoreForXOfAKind(DiceWrapper diceWrapper, Integer frequency) {
         return diceWrapper.getValuesWithFrequency(frequency).stream()
                 .map(value -> value * frequency)
                 .mapToInt(Integer::valueOf)
