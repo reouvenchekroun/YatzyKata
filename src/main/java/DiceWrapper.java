@@ -38,4 +38,10 @@ public class DiceWrapper {
                 .allMatch(diceResult -> dices.contains(diceResult.getValue()));
     }
 
+    public boolean isFullHouse() {
+        var pairs = getValuesWithFrequency(2);
+        var threeOfAKind = getValuesWithFrequency(3);
+        return threeOfAKind.size() > 0 && !threeOfAKind.containsAll(pairs);
+    }
+
 }
