@@ -41,7 +41,7 @@ public class DiceWrapper {
     public boolean isFullHouse() {
         var pairs = getValuesWithFrequency(2);
         var threeOfAKind = getValuesWithFrequency(3);
-        return threeOfAKind.size() > 0 && !threeOfAKind.containsAll(pairs);
+        return !threeOfAKind.isEmpty() && !threeOfAKind.containsAll(pairs);
     }
 
 }
