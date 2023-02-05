@@ -32,4 +32,10 @@ public class DiceWrapper {
                 .filter(dice -> Collections.frequency(dices, dice) >= frequency)
                 .collect(Collectors.toSet());
     }
+
+    public boolean containsResults(List<DiceResult> diceResults) {
+        return diceResults.stream()
+                .allMatch(diceResult -> dices.contains(diceResult.getValue()));
+    }
+
 }

@@ -1,9 +1,17 @@
 import java.util.Comparator;
+import java.util.List;
 
 public class Yatzy {
 
     public static final int YATZY_POINTS = 50;
+    public static final int SMALL_STRAIGHT_POINTS = 15;
+    private static final int LARGE_STRAIGHT_POINTS = 20;
+
     public static final int NO_POINTS = 0;
+    private static final List<DiceResult> SMALL_STRAIGHT_VALUES = List.of(
+            DiceResult.ONE, DiceResult.TWO, DiceResult.THREE, DiceResult.FOUR, DiceResult.FIVE);
+    private static final List<DiceResult> LARGE_STRAIGHT_VALUES = List.of(
+           DiceResult.TWO, DiceResult.THREE, DiceResult.FOUR, DiceResult.FIVE, DiceResult.SIX);
 
     public static int chance(DiceWrapper diceWrapper)
     {
@@ -63,40 +71,14 @@ public class Yatzy {
         return calculateXOfAKindScore(diceWrapper, 4);
     }
 
-    public static int smallStraight(int d1, int d2, int d3, int d4, int d5)
+    public static int smallStraight(DiceWrapper diceWrapper)
     {
-        int[] tallies;
-        tallies = new int[6];
-        tallies[d1-1] += 1;
-        tallies[d2-1] += 1;
-        tallies[d3-1] += 1;
-        tallies[d4-1] += 1;
-        tallies[d5-1] += 1;
-        if (tallies[0] == 1 &&
-                tallies[1] == 1 &&
-                tallies[2] == 1 &&
-                tallies[3] == 1 &&
-                tallies[4] == 1)
-            return 15;
-        return 0;
+        return diceWrapper.containsResults(SMALL_STRAIGHT_VALUES) ? SMALL_STRAIGHT_POINTS : NO_POINTS;
     }
 
-    public static int largeStraight(int d1, int d2, int d3, int d4, int d5)
+    public static int largeStraight(DiceWrapper diceWrapper)
     {
-        int[] tallies;
-        tallies = new int[6];
-        tallies[d1-1] += 1;
-        tallies[d2-1] += 1;
-        tallies[d3-1] += 1;
-        tallies[d4-1] += 1;
-        tallies[d5-1] += 1;
-        if (tallies[1] == 1 &&
-                tallies[2] == 1 &&
-                tallies[3] == 1 &&
-                tallies[4] == 1
-                && tallies[5] == 1)
-            return 20;
-        return 0;
+        return diceWrapper.containsResults(LARGE_STRAIGHT_VALUES) ? LARGE_STRAIGHT_POINTS : NO_POINTS;
     }
 
     public static int fullHouse(int d1, int d2, int d3, int d4, int d5)

@@ -99,16 +99,16 @@ public class YatzyTest {
 
     @Test
     public void smallStraight() {
-        assertEquals(0, Yatzy.smallStraight(1,2,2,4,5));
-        assertEquals(15, Yatzy.smallStraight(1,2,3,4,5));
-        assertEquals(15, Yatzy.smallStraight(2,3,4,5,1));
+        assertEquals(0, Yatzy.smallStraight(new DiceWrapper(1,2,2,4,5)));
+        assertEquals(15, Yatzy.smallStraight(new DiceWrapper(1,2,3,4,5)));
+        assertEquals(15, Yatzy.smallStraight(new DiceWrapper(2,3,4,5,1)));
     }
 
     @Test
     public void largeStraight() {
-        assertEquals(0, Yatzy.largeStraight(1,2,2,4,5));
-        assertEquals(20, Yatzy.largeStraight(6,2,3,4,5));
-        assertEquals(20, Yatzy.largeStraight(2,3,4,5,6));
+        assertEquals(0, Yatzy.largeStraight(new DiceWrapper(1,2,2,4,5)));
+        assertEquals(20, Yatzy.largeStraight(new DiceWrapper(6,2,3,4,5)));
+        assertEquals(20, Yatzy.largeStraight(new DiceWrapper(2,3,4,5,6)));
     }
 
     @Test
