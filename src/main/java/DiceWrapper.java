@@ -12,4 +12,9 @@ public class DiceWrapper {
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
+    public boolean hasAllDicesWithSameValue() {
+        return dices.stream()
+                .allMatch(dice -> dices.get(0).equals(dice));
+    }
 }

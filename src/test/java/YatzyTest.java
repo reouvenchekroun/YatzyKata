@@ -13,9 +13,9 @@ public class YatzyTest {
 
     @Test
     public void yatzy() {
-        assertEquals(50, Yatzy.yatzy(4,4,4,4,4));
-        assertEquals(50, Yatzy.yatzy(6,6,6,6,6));
-        assertEquals(0, Yatzy.yatzy(6,6,6,6,3));
+        assertEquals(50, Yatzy.yatzy(new DiceWrapper(4,4,4,4,4)));
+        assertEquals(50, Yatzy.yatzy(new DiceWrapper(6,6,6,6,6)));
+        assertEquals(0, Yatzy.yatzy(new DiceWrapper(6,6,6,6,3)));
     }
 
     @Test
