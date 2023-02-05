@@ -13,70 +13,28 @@ public class Yatzy {
         return diceWrapper.hasAllDicesWithSameValue() ? YATZY_POINTS : NO_POINTS;
     }
 
-    public static int ones(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 1) sum++;
-        if (d2 == 1) sum++;
-        if (d3 == 1) sum++;
-        if (d4 == 1) sum++;
-        if (d5 == 1)
-            sum++;
-
-        return sum;
+    public static int ones(DiceWrapper diceWrapper) {
+        return countPointsForDicesWithValue(diceWrapper, DiceResult.ONE);
     }
 
-    public static int twos(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 2) sum += 2;
-        if (d2 == 2) sum += 2;
-        if (d3 == 2) sum += 2;
-        if (d4 == 2) sum += 2;
-        if (d5 == 2) sum += 2;
-        return sum;
+    public static int twos(DiceWrapper diceWrapper) {
+        return countPointsForDicesWithValue(diceWrapper, DiceResult.TWO);
     }
 
-    public static int threes(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 3) sum += 3;
-        if (d2 == 3) sum += 3;
-        if (d3 == 3) sum += 3;
-        if (d4 == 3) sum += 3;
-        if (d5 == 3) sum += 3;
-
-        return sum;
+    public static int threes(DiceWrapper diceWrapper) {
+        return countPointsForDicesWithValue(diceWrapper, DiceResult.THREE);
     }
 
-    public static int fours(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 4) sum += 4;
-        if (d2 == 4) sum += 4;
-        if (d3 == 4) sum += 4;
-        if (d4 == 4) sum += 4;
-        if (d5 == 4) sum += 4;
-
-        return sum;
+    public static int fours(DiceWrapper diceWrapper) {
+        return countPointsForDicesWithValue(diceWrapper, DiceResult.FOUR);
     }
 
-    public static int fives(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 5) sum += 5;
-        if (d2 == 5) sum += 5;
-        if (d3 == 5) sum += 5;
-        if (d4 == 5) sum += 5;
-        if (d5 == 5) sum += 5;
-
-        return sum;
+    public static int fives(DiceWrapper diceWrapper) {
+        return countPointsForDicesWithValue(diceWrapper, DiceResult.FIVE);
     }
 
-    public static int sixes(int d1, int d2, int d3, int d4, int d5) {
-        int sum = 0;
-        if (d1 == 6) sum += 6;
-        if (d2 == 6) sum += 6;
-        if (d3 == 6) sum += 6;
-        if (d4 == 6) sum += 6;
-        if (d5 == 6) sum += 6;
-
-        return sum;
+    public static int sixes(DiceWrapper diceWrapper) {
+        return countPointsForDicesWithValue(diceWrapper, DiceResult.SIX);
     }
 
     public static int onePair(int d1, int d2, int d3, int d4, int d5)
@@ -213,5 +171,9 @@ public class Yatzy {
             return _2_at * 2 + _3_at * 3;
         else
             return 0;
+    }
+
+    private static int countPointsForDicesWithValue(DiceWrapper diceWrapper, DiceResult diceResult) {
+        return diceWrapper.getOccurencesOfValue(diceResult) * diceResult.getValue();
     }
 }

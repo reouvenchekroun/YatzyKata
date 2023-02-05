@@ -17,4 +17,10 @@ public class DiceWrapper {
         return dices.stream()
                 .allMatch(dice -> dices.get(0).equals(dice));
     }
+
+    public int getOccurencesOfValue(DiceResult diceResult) {
+        return (int) dices.stream()
+                .filter(dice -> dice.equals(diceResult.getValue()))
+                .count();
+    }
 }

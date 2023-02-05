@@ -20,48 +20,48 @@ public class YatzyTest {
 
     @Test
     public void ones() {
-        assertEquals(0, Yatzy.ones(6,2,2,4,5));
-        assertEquals(1, Yatzy.ones(1, 2, 3, 4, 5));
-        assertEquals(2, Yatzy.ones(1,2,1,4,5));
-        assertEquals(4, Yatzy.ones(1,2,1,1,1));
+        assertEquals(0, Yatzy.ones(new DiceWrapper(6,2,2,4,5)));
+        assertEquals(1, Yatzy.ones(new DiceWrapper(1, 2, 3, 4, 5)));
+        assertEquals(2, Yatzy.ones(new DiceWrapper(1,2,1,4,5)));
+        assertEquals(4, Yatzy.ones(new DiceWrapper(1,2,1,1,1)));
     }
 
     @Test
     public void twos() {
-        assertEquals(0, Yatzy.twos(1,5,3,1,6));
-        assertEquals(4, Yatzy.twos(1,2,3,2,6));
-        assertEquals(10, Yatzy.twos(2,2,2,2,2));
+        assertEquals(0, Yatzy.twos(new DiceWrapper(1,5,3,1,6)));
+        assertEquals(4, Yatzy.twos(new DiceWrapper(1,2,3,2,6)));
+        assertEquals(10, Yatzy.twos(new DiceWrapper(2,2,2,2,2)));
     }
 
     @Test
     public void threes() {
-        assertEquals(0, Yatzy.threes(1,6,4,2,6));
-        assertEquals(6, Yatzy.threes(1,2,3,2,3));
-        assertEquals(12, Yatzy.threes(2,3,3,3,3));
+        assertEquals(0, Yatzy.threes(new DiceWrapper(1,6,4,2,6)));
+        assertEquals(6, Yatzy.threes(new DiceWrapper(1,2,3,2,3)));
+        assertEquals(12, Yatzy.threes(new DiceWrapper(2,3,3,3,3)));
     }
 
     @Test
     public void fours()
     {
-        assertEquals(0, Yatzy.fours(1,2,3,2,5));
-        assertEquals(4, Yatzy.fours(4,5,5,5,5));
-        assertEquals(8, Yatzy.fours(4,4,5,5,5));
-        assertEquals(12, Yatzy.fours(4,4,4,5,5));
+        assertEquals(0, Yatzy.fours(new DiceWrapper(1,2,3,2,5)));
+        assertEquals(4, Yatzy.fours(new DiceWrapper(4,5,5,5,5)));
+        assertEquals(8, Yatzy.fours(new DiceWrapper(4,4,5,5,5)));
+        assertEquals(12, Yatzy.fours(new DiceWrapper(4,4,4,5,5)));
     }
 
     @Test
     public void fives() {
-        assertEquals(0, Yatzy.fives(2,4,4,1,6));
-        assertEquals(10, Yatzy.fives(4,4,4,5,5));
-        assertEquals(15, Yatzy.fives(4,4,5,5,5));
-        assertEquals(20, Yatzy.fives(4,5,5,5,5));
+        assertEquals(0, Yatzy.fives(new DiceWrapper(2,4,4,1,6)));
+        assertEquals(10, Yatzy.fives(new DiceWrapper(4,4,4,5,5)));
+        assertEquals(15, Yatzy.fives(new DiceWrapper(4,4,5,5,5)));
+        assertEquals(20, Yatzy.fives(new DiceWrapper(4,5,5,5,5)));
     }
 
     @Test
     public void sixes() {
-        assertEquals(0, Yatzy.sixes(4,4,4,5,5));
-        assertEquals(6, Yatzy.sixes(4,4,6,5,5));
-        assertEquals(18, Yatzy.sixes(6,5,6,6,5));
+        assertEquals(0, Yatzy.sixes(new DiceWrapper(4,4,4,5,5)));
+        assertEquals(6, Yatzy.sixes(new DiceWrapper(4,4,6,5,5)));
+        assertEquals(18, Yatzy.sixes(new DiceWrapper(6,5,6,6,5)));
     }
 
     @Test
