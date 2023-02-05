@@ -1,4 +1,7 @@
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DiceWrapper {
     private final List<Integer> dices;
@@ -22,5 +25,11 @@ public class DiceWrapper {
         return (int) dices.stream()
                 .filter(dice -> dice.equals(diceResult.getValue()))
                 .count();
+    }
+
+    public Set<Integer> getPairs() {
+        return dices.stream()
+                .filter(dice -> Collections.frequency(dices, dice) >= 2)
+                .collect(Collectors.toSet());
     }
 }
