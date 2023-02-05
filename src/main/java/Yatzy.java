@@ -41,49 +41,26 @@ public class Yatzy {
 
     public static int onePair(DiceWrapper diceWrapper)
     {
-        var highestPair = diceWrapper.getPairs().stream()
+        var highestPair = diceWrapper.getValuesWithFrequency(2).stream()
                 .max(Comparator.comparing(Integer::valueOf));
 
-        return highestPair.map(Yatzy::calculatePairScore)
+        return highestPair.map(value -> value * 2)
                 .orElse(NO_POINTS);
     }
 
     public static int twoPairs(DiceWrapper diceWrapper)
     {
-        return diceWrapper.getPairs().stream()
-                .map(Yatzy::calculatePairScore)
-                .mapToInt(Integer::valueOf)
-                .sum();
+        return calculateXOfAKindScore(diceWrapper, 2);
     }
 
-    public static int threeOfAKind(int d1, int d2, int d3, int d4, int d5)
+    public static int threeOfAKind(DiceWrapper diceWrapper)
     {
-        int[] t;
-        t = new int[6];
-        t[d1-1]++;
-        t[d2-1]++;
-        t[d3-1]++;
-        t[d4-1]++;
-        t[d5-1]++;
-        for (int i = 0; i < 6; i++)
-            if (t[i] >= 3)
-                return (i+1) * 3;
-        return 0;
+        return calculateXOfAKindScore(diceWrapper, 3);
     }
 
-    public static int fourOfAKind(int d1, int d2, int d3, int d4, int d5)
+    public static int fourOfAKind(DiceWrapper diceWrapper)
     {
-        int[] tallies;
-        tallies = new int[6];
-        tallies[d1-1]++;
-        tallies[d2-1]++;
-        tallies[d3-1]++;
-        tallies[d4-1]++;
-        tallies[d5-1]++;
-        for (int i = 0; i < 6; i++)
-            if (tallies[i] >= 4)
-                return (i+1) * 4;
-        return 0;
+        return calculateXOfAKindScore(diceWrapper, 4);
     }
 
     public static int smallStraight(int d1, int d2, int d3, int d4, int d5)
@@ -160,7 +137,10 @@ public class Yatzy {
         return diceWrapper.getOccurencesOfValue(diceResult) * diceResult.getValue();
     }
 
-    private static int calculatePairScore(Integer highestPairValue) {
-        return highestPairValue * 2;
+    private static int calculateXOfAKindScore(DiceWrapper diceWrapper, Integer frequency) {
+        return diceWrapper.getValuesWithFrequency(frequency).stream()
+                .map(value -> value * frequency)
+                .mapToInt(Integer::valueOf)
+                .sum();
     }
 }

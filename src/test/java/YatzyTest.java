@@ -83,18 +83,18 @@ public class YatzyTest {
     @Test
     public void threeOfAKind()
     {
-        assertEquals(0, Yatzy.threeOfAKind(3,3,2,4,5));
-        assertEquals(9, Yatzy.threeOfAKind(3,3,3,4,5));
-        assertEquals(15, Yatzy.threeOfAKind(5,3,5,4,5));
-        assertEquals(9, Yatzy.threeOfAKind(3,3,3,3,5));
+        assertEquals(0, Yatzy.threeOfAKind(new DiceWrapper(3,3,2,4,5)));
+        assertEquals(9, Yatzy.threeOfAKind(new DiceWrapper(3,3,3,4,5)));
+        assertEquals(15, Yatzy.threeOfAKind(new DiceWrapper(5,3,5,4,5)));
+        assertEquals(9, Yatzy.threeOfAKind(new DiceWrapper(3,3,3,3,5)));
     }
 
     @Test
     public void fourOfAKind() {
-        assertEquals(0, Yatzy.fourOfAKind(2,3,3,3,5));
-        assertEquals(12, Yatzy.fourOfAKind(3,3,3,3,5));
-        assertEquals(20, Yatzy.fourOfAKind(5,5,5,4,5));
-        assertEquals(9, Yatzy.threeOfAKind(3,3,3,3,3));
+        assertEquals(0, Yatzy.fourOfAKind(new DiceWrapper(2,3,3,3,5)));
+        assertEquals(12, Yatzy.fourOfAKind(new DiceWrapper(3,3,3,3,5)));
+        assertEquals(20, Yatzy.fourOfAKind(new DiceWrapper(5,5,5,4,5)));
+        assertEquals(12, Yatzy.fourOfAKind(new DiceWrapper(3,3,3,3,3)));
     }
 
     @Test

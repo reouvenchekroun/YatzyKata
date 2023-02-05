@@ -21,15 +21,15 @@ public class DiceWrapper {
                 .allMatch(dice -> dices.get(0).equals(dice));
     }
 
-    public int getOccurencesOfValue(DiceResult diceResult) {
+    public Integer getOccurencesOfValue(DiceResult diceResult) {
         return (int) dices.stream()
                 .filter(dice -> dice.equals(diceResult.getValue()))
                 .count();
     }
 
-    public Set<Integer> getPairs() {
+    public Set<Integer> getValuesWithFrequency(Integer frequency) {
         return dices.stream()
-                .filter(dice -> Collections.frequency(dices, dice) >= 2)
+                .filter(dice -> Collections.frequency(dices, dice) >= frequency)
                 .collect(Collectors.toSet());
     }
 }
