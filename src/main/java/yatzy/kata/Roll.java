@@ -1,3 +1,5 @@
+package yatzy.kata;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -31,7 +33,7 @@ public class Roll {
                 .allMatch(dice -> dices.get(0).equals(dice));
     }
 
-    public Integer getOccurencesOfValue(DiceValue diceValue) {
+    public Integer getOccurrencesOfValue(DiceValue diceValue) {
         return (int) dices.stream()
                 .filter(dice -> dice.equals(diceValue))
                 .count();

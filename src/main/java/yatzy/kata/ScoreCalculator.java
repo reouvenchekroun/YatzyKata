@@ -1,6 +1,10 @@
+package yatzy.kata;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+
+import static yatzy.kata.DiceValue.*;
 
 public class ScoreCalculator {
 
@@ -10,9 +14,9 @@ public class ScoreCalculator {
 
     public static final int NO_POINTS = 0;
     private static final List<DiceValue> SMALL_STRAIGHT_VALUES = List.of(
-            DiceValue.ONE, DiceValue.TWO, DiceValue.THREE, DiceValue.FOUR, DiceValue.FIVE);
+            ONE, TWO, THREE, FOUR, FIVE);
     private static final List<DiceValue> LARGE_STRAIGHT_VALUES = List.of(
-           DiceValue.TWO, DiceValue.THREE, DiceValue.FOUR, DiceValue.FIVE, DiceValue.SIX);
+           TWO, THREE, FOUR, FIVE, SIX);
 
     public int chance(Roll roll) {
         return roll.sum();
@@ -23,27 +27,27 @@ public class ScoreCalculator {
     }
 
     public int ones(Roll roll) {
-        return calculateScoreForDiceResult(roll, DiceValue.ONE);
+        return calculateScoreForDiceResult(roll, ONE);
     }
 
     public int twos(Roll roll) {
-        return calculateScoreForDiceResult(roll, DiceValue.TWO);
+        return calculateScoreForDiceResult(roll, TWO);
     }
 
     public int threes(Roll roll) {
-        return calculateScoreForDiceResult(roll, DiceValue.THREE);
+        return calculateScoreForDiceResult(roll, THREE);
     }
 
     public int fours(Roll roll) {
-        return calculateScoreForDiceResult(roll, DiceValue.FOUR);
+        return calculateScoreForDiceResult(roll, FOUR);
     }
 
     public int fives(Roll roll) {
-        return calculateScoreForDiceResult(roll, DiceValue.FIVE);
+        return calculateScoreForDiceResult(roll, FIVE);
     }
 
     public int sixes(Roll roll) {
-        return calculateScoreForDiceResult(roll, DiceValue.SIX);
+        return calculateScoreForDiceResult(roll, SIX);
     }
 
     public int onePair(Roll roll) {
@@ -80,7 +84,7 @@ public class ScoreCalculator {
     }
 
     private int calculateScoreForDiceResult(Roll roll, DiceValue diceValue) {
-        return roll.getOccurencesOfValue(diceValue) * diceValue.getValue();
+        return roll.getOccurrencesOfValue(diceValue) * diceValue.getValue();
     }
 
     private int calculateScoreForXOfAKind(Roll roll, Integer frequency) {

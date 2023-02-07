@@ -1,3 +1,5 @@
+package yatzy.kata;
+
 import java.util.Arrays;
 
 public enum DiceValue {
